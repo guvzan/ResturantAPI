@@ -1,0 +1,9 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<h1>{{ user.first_name }}'s profile</h1>
+<p><b>ID:</b> {{ user.id }}</p>
+<p><b>First name:</b> {{ user.first_name }}</p>
+<p><b>Last name:</b> {{ user.last_name }}</p>
+
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<h1>Register new user</h1>
+<div>
+    <form action="{% url 'users:register' %}" method="post">
+    {% csrf_token %}
+    <p>
+        <input type="email" name="email">
+        <label for="email">Email</label>
+    </p>
+    <p>
+        <input type="text" name="first_name">
+        <label for="first_name">First name</label>
+    </p>
+    <p>
+        <input type="text" name="last_name">
+        <label for="last_name">Last name</label>
+    </p>
+    <p>
+        <input type="password" name="password">
+        <label for="password">Password</label>
+    </p>
+    <p>
+        <input type="submit" value="Send">
+    </p>
+</form>
+</div>
+
+{% endblock content %}
