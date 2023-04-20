@@ -1,0 +1,10 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    <h1>Create resturant</h1>
+    <form action="{% url 'resturants:create_resturant' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Register</button>
+    </form>
+{% endblock content %}

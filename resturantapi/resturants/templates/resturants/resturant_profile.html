@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    <h1>Resturant "{{ resturant.name }}" information page</h1>
+    {% for menu in menus %}
+        {% if menu.for_day != resturant.active_menu %}
+            <ul>
+                <li>Day {{ menu.for_day }}</li>
+                <li>{{ menu.main }}</li>
+                <li>{{ menu.salad }}</li>
+                <li>{{ menu.dessert }}</li>
+                <li>{{ menu.drink }}</li>
+            </ul>
+            <a href="{% url 'resturants:edit_menu' menu.id %}">Edit menu</a><br>
+        {% else %}
+            <ul>
+                <b>
+                <li>Day {{ menu.for_day }}</li>
+                <li>{{ menu.main }}</li>
+                <li>{{ menu.salad }}</li>
+                <li>{{ menu.dessert }}</li>
+                <li>{{ menu.drink }}</li>
+                </b>
+            </ul>
+            <a href="{% url 'resturants:edit_menu' menu.id %}">Edit menu</a><br>
+        {% endif %}
+    {% endfor %}
+    <br>
+    <a href="{% url 'resturants:create_menu' %}">Add menu</a>
+    <a href="{% url 'resturants:edit_resturant' resturant.id %}">Set new active menu</a>
+
+{% endblock content %}

@@ -36,7 +36,7 @@ class CreateUserAPIView(APIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     @api_view(['POST'])
-    def authenticate_user(self, request):   #Дописав Self
+    def authenticate_user(self, request):
         """
          Actually works with data, doesn't render anything.
          Tries to authenticate user and generates JWT-token for them.

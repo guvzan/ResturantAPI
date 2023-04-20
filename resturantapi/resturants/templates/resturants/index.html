@@ -1,0 +1,41 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<h1>Index</h1>
+
+<p>
+    Votes leader -- resturant "{{ winner }}"
+    {% for menu in menus %}
+        {% if menu.for_day == winner.active_menu %}
+            <ul>
+                <li>{{ menu.main }}</li>
+                <li>{{ menu.salad }}</li>
+                <li>{{ menu.dessert }}</li>
+                <li>{{ menu.drink }}</li>
+            </ul>
+        {% endif %}
+    {% endfor %}
+</p>
+<p>Vote here:</p>
+
+
+{% for resturant in resturants %}
+    <p>
+        <a href="{% url 'resturants:read_resturant' resturant.id %}">{{ resturant }}</a>
+        -- {{ resturant.votes }}
+        <form action="{% url 'resturants:vote' resturant.id %}" method="post">
+            {% csrf_token %}
+            <button name="submit">Vote</button>
+        </form>
+        <br>
+    </p>
+{% endfor %}
+
+{% if user.is_superuser %}
+    <form action="{% url 'resturants:reset_votes' %}" method="post">
+        {% csrf_token %}
+        <button name="submit">Reset votes</button>
+    </form>
+{% endif%}
+
+{% endblock content %}

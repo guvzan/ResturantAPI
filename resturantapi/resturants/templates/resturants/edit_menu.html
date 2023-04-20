@@ -1,0 +1,10 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    <h1>Edit menu</h1>
+    <form action="{% url 'resturants:edit_menu' menu.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Update</button>
+    </form>
+{% endblock content %}

@@ -24,4 +24,5 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path('user/', include(('users.urls', 'users'), namespace='users')),
+    re_path('resturant/', include(('resturants.urls', 'resturants'), namespace='resturants')),
 ]

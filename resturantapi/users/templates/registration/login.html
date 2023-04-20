@@ -7,6 +7,6 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Log In</button>
-        <input type="hidden" name="next" value="{% url 'users:user_profile' 1 %}"/>
+        <input type="hidden" name="next" value="{% url 'resturants:index' %}"/>
     </form>
 {% endblock content %}

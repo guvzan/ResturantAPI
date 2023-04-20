@@ -1,0 +1,14 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    <h1>Resturant "{{ menu.resturant }}"</h1>
+        <h3>Menu #{{ menu.id }}</h3>
+        <ul>
+            <li>{{ menu.main }}</li>
+            <li>{{ menu.salad }}</li>
+            <li>{{ menu.dessert }}</li>
+            <li>{{ menu.drink }}</li>
+        </ul>
+        <a href="{% url 'resturants:edit_menu' menu.id %}">Edit</a>
+
+{% endblock content %}
