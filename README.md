@@ -9,6 +9,6 @@
   <li>DB_PASSWORD=your_password</li>
   <li>DB_HOST=localhost</li>
   <li>DB_PORT=5432</li>
-</ul>
+</ul><br>
 
 4. Make migrations to populate your Database with tables by running this commands: "python manage.py makemigrations" and then "python manage.py migrate"<br>
