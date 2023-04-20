@@ -10,6 +10,10 @@ class Resturant(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def has_votes(self):
+        return self.votes > 0
+
 
 class Menu(models.Model):
     main = models.CharField()

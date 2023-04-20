@@ -6,6 +6,9 @@ from .models import Resturant, Menu
 
 
 def index(request):
+    """
+    Returns main page.
+    """
     resturants = Resturant.objects.all().order_by('-votes')
     menus = Menu.objects.filter(resturant=resturants[0])
     context = {
@@ -18,6 +21,9 @@ def index(request):
 
 @login_required
 def vote(request, resturant_id):
+    """
+    Increases vote counter for selected resturant.
+    """
     if request.method == "POST":
         resturant = Resturant.objects.get(id=resturant_id)
         resturant.votes += 1
@@ -27,6 +33,10 @@ def vote(request, resturant_id):
 
 @login_required
 def reset_votes(request):
+    """
+    Resets vote counter for all resturants.
+    Recommended to give access to it only to superuser.
+    """
     resturants = Resturant.objects.all()
     for resturant in resturants:
         resturant.votes = 0
@@ -35,7 +45,9 @@ def reset_votes(request):
 
 
 class ResturantCRUD:
-
+    """
+    Standart CRUD operations for Resturant model/table.
+    """
     def create(self, request):
         if request.method == 'POST':
             form = ResturantForm(data=request.POST)
@@ -78,6 +90,9 @@ class ResturantCRUD:
 
 
 class MenuCRUD:
+    """
+    Standart CRUD operations for Menu model/table.
+    """
     def create(self, request):
         if request.method == 'POST':
             form = MenuForm(data=request.POST)
